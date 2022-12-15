@@ -3,12 +3,12 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Clipboard } from "react-feather";
 import { useDispatch, useSelector } from "react-redux";
-import BoxDesc from "../components/boxLayout/BoxDesc";
-import CardFormulir from "../components/cards/cardFormulis";
-import FieldUpload from "../components/field/fieldUpload";
-import BackHeader from "../components/header/backHeader";
-import NextHead from "../components/layout/nextHead";
-import { addDataImgs } from "../components/redux/reducer/actionHandleData";
+import BoxDesc from "../../components/boxLayout/BoxDesc";
+import CardFormulir from "../../components/cards/cardFormulis";
+import FieldUpload from "../../components/field/fieldUpload";
+import BackHeader from "../../components/header/backHeader";
+import NextHead from "../../components/layout/nextHead";
+import { addDataImgs } from "../../components/redux/reducer/actionHandleData";
 
 export default function FormSimStnk() {
   const router = useRouter();

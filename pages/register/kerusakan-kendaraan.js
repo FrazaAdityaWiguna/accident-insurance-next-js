@@ -9,12 +9,12 @@ import {
 import { useEffect, useState } from "react";
 import { Clipboard, Edit3, Trash2 } from "react-feather";
 import { useDispatch, useSelector } from "react-redux";
-import BoxDesc from "../components/boxLayout/BoxDesc";
-import CardFormulir from "../components/cards/cardFormulis";
-import FieldUpload2 from "../components/field/fieladUpload2";
-import BackHeader from "../components/header/backHeader";
-import NextHead from "../components/layout/nextHead";
-import { addImgsAccidents } from "../components/redux/reducer/actionHandleData";
+import BoxDesc from "../../components/boxLayout/BoxDesc";
+import CardFormulir from "../../components/cards/cardFormulis";
+import FieldUpload2 from "../../components/field/fieladUpload2";
+import BackHeader from "../../components/header/backHeader";
+import NextHead from "../../components/layout/nextHead";
+import { addImgsAccidents } from "../../components/redux/reducer/actionHandleData";
 
 export default function VehicleDamage() {
   const [dataImgsAccidents, setDataImgsAccidents] = useState([]);

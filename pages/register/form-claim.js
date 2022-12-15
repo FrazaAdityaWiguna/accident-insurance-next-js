@@ -10,18 +10,18 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import NextHead from "../components/layout/nextHead";
+import NextHead from "../../components/layout/nextHead";
 import { Clipboard } from "react-feather";
 import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
-import BoxDesc from "../components/boxLayout/BoxDesc";
+import BoxDesc from "../../components/boxLayout/BoxDesc";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import moment from "moment";
-import { addDataInsurance } from "../components/redux/reducer/actionHandleData";
-import BackHeader from "../components/header/backHeader";
-import CardFormulir from "../components/cards/cardFormulis";
+import { addDataInsurance } from "../../components/redux/reducer/actionHandleData";
+import BackHeader from "../../components/header/backHeader";
+import CardFormulir from "../../components/cards/cardFormulis";
 import { useRouter } from "next/router";
 
 export default function FormClaim() {
