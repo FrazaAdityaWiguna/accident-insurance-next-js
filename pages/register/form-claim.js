@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Card,
   Container,
   FormControl,
   Input,
@@ -20,7 +19,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import moment from "moment";
-import { addDataInsurance } from "../lib/redux/reducer/actionHandleData";
+import { addDataInsurance } from "../components/redux/reducer/actionHandleData";
 import BackHeader from "../components/header/backHeader";
 import CardFormulir from "../components/cards/cardFormulis";
 import { useRouter } from "next/router";
