@@ -10,9 +10,11 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, actionHandleData);
-export default store = configureStore({
+export const store = configureStore({
   reducer: persistedReducer,
   middleware: [thunk],
 });
 
 export const persistor = persistStore(store);
+
+export default store;
