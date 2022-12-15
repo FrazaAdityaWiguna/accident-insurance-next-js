@@ -11,6 +11,7 @@ export default function BackHeader({ title, prevPage }) {
           display: "flex",
           alignItems: "center",
           padding: "30px 0",
+          cursor: "pointer",
         }}
         className="color-primary"
         onClick={() => {
