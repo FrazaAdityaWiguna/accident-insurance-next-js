@@ -28,6 +28,7 @@ export default function FieldUpload({
             position: "relative",
             maxHeight: "fit-content",
             maxWidth: "fit-content",
+            overflow: "hidden",
           }}
         >
           <img
@@ -38,7 +39,7 @@ export default function FieldUpload({
           <Box
             sx={{
               position: "absolute",
-              bottom: 0,
+              bottom: "3px",
               right: 0,
               p: "20px",
               borderTopLeftRadius: "10px",

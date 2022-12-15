@@ -13,16 +13,17 @@ import {
 import NextHead from "../../components/layout/nextHead";
 import { Clipboard } from "react-feather";
 import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import BoxDesc from "../../components/boxLayout/BoxDesc";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import moment from "moment";
-import { addDataInsurance } from "../../components/redux/reducer/actionHandleData";
+import { addDataInsurance } from "../../lib/redux/reducer/actionHandleData";
 import BackHeader from "../../components/header/backHeader";
 import CardFormulir from "../../components/cards/cardFormulis";
 import { useRouter } from "next/router";
+import { id } from "date-fns/locale";
 
 export default function FormClaim() {
   const dispatch = useDispatch();
@@ -163,13 +164,10 @@ export default function FormClaim() {
             </Select>
           </FormControl>
 
-          <LocalizationProvider
-            dateAdapter={AdapterMoment}
-            adapterLocale="zhCN"
-          >
+          <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={id}>
             <DesktopDatePicker
               label="Date desktop"
-              inputFormat="dddd MMMM YYYY"
+              inputFormat="ii MMMM yyyy"
               value={
                 dataInsurance.tanggalKejadian
                   ? moment(dataInsurance.tanggalKejadian).locale("id")

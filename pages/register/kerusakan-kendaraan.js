@@ -14,7 +14,7 @@ import CardFormulir from "../../components/cards/cardFormulis";
 import FieldUpload2 from "../../components/field/fieladUpload2";
 import BackHeader from "../../components/header/backHeader";
 import NextHead from "../../components/layout/nextHead";
-import { addImgsAccidents } from "../../components/redux/reducer/actionHandleData";
+import { addImgsAccidents } from "../../lib/redux/reducer/actionHandleData";
 
 export default function VehicleDamage() {
   const [dataImgsAccidents, setDataImgsAccidents] = useState([]);
@@ -53,7 +53,7 @@ export default function VehicleDamage() {
         <NextHead title="Fk Alt 2" />
         <BackHeader title="Registrasi Klaim" prevPage="/register/sim-stnk" />
         <CardFormulir
-          title="Foto SIM & STNK"
+          title="Klaim Kerusakan Kendaraan"
           bgColor="rgba(95, 82, 235, 0.1)"
           icon={<Clipboard fill="#fff" color="#5f52eb" />}
         />

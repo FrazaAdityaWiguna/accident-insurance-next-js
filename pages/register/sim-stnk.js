@@ -8,7 +8,7 @@ import CardFormulir from "../../components/cards/cardFormulis";
 import FieldUpload from "../../components/field/fieldUpload";
 import BackHeader from "../../components/header/backHeader";
 import NextHead from "../../components/layout/nextHead";
-import { addDataImgs } from "../../components/redux/reducer/actionHandleData";
+import { addDataImgs } from "../../lib/redux/reducer/actionHandleData";
 
 export default function FormSimStnk() {
   const router = useRouter();
