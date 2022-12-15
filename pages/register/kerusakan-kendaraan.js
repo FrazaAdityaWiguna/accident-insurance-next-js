@@ -14,7 +14,7 @@ import CardFormulir from "../components/cards/cardFormulis";
 import FieldUpload2 from "../components/field/fieladUpload2";
 import BackHeader from "../components/header/backHeader";
 import NextHead from "../components/layout/nextHead";
-import { addImgsAccidents } from "../redux/reducer/actionHandleData";
+import { addImgsAccidents } from "../lib/redux/reducer/actionHandleData";
 
 export default function VehicleDamage() {
   const [dataImgsAccidents, setDataImgsAccidents] = useState([]);

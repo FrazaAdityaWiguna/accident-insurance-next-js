@@ -20,7 +20,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import moment from "moment";
-import { addDataInsurance } from "../redux/reducer/actionHandleData";
+import { addDataInsurance } from "../lib/redux/reducer/actionHandleData";
 import BackHeader from "../components/header/backHeader";
 import CardFormulir from "../components/cards/cardFormulis";
 import { useRouter } from "next/router";
