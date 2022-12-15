@@ -1,7 +1,7 @@
 import {
   Box,
+  Button,
   Card,
-  CardContent,
   Container,
   FormControl,
   Input,
@@ -12,49 +12,54 @@ import {
   Typography,
 } from "@mui/material";
 import NextHead from "../components/layout/nextHead";
-import { ArrowLeft, Clipboard } from "react-feather";
+import { Clipboard } from "react-feather";
 import { DesktopDatePicker, LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
+import BoxDesc from "../components/boxLayout/BoxDesc";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import moment from "moment";
+import { addDataInsurance } from "../redux/reducer/actionHandleData";
+import BackHeader from "../components/header/backHeader";
+import CardFormulir from "../components/cards/cardFormulis";
+import { useRouter } from "next/router";
 
 export default function FormClaim() {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const dataIns = useSelector((state) => state.dataInsurance);
+  const [dataInsurance, setDataInsurance] = useState({
+    namaPengemudi: "",
+    warnaMobil: "",
+    tanggalKejadian: null,
+    tahunPembuatan: "",
+    hubunganTangunggan: "",
+    penyebabKecelakaan: "",
+  });
+
+  useEffect(() => {
+    setDataInsurance({
+      namaPengemudi: dataIns?.namaPengemudi,
+      warnaMobil: dataIns?.warnaMobil,
+      tanggalKejadian: dataIns?.tanggalKejadian,
+      tahunPembuatan: dataIns?.tahunPembuatan,
+      hubunganTangunggan: dataIns?.hubunganTangunggan,
+      penyebabKecelakaan: dataIns?.penyebabKecelakaan,
+    });
+  }, []);
+
   return (
     <>
       <Container maxWidth="md">
         <NextHead title="Form Klaim" />
-        <header>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              padding: "30px 0",
-            }}
-            className="color-primary"
-          >
-            <ArrowLeft color="#1103a6" />
-            <Box sx={{ marginLeft: "10px", fontWeight: "bold" }}>
-              Registrasi Klaim
-            </Box>
-          </Box>
-        </header>
+        <BackHeader title="Registrasi Klaim" prevPage="/" />
 
-        <Card sx={{ marginBottom: "20px" }}>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                marginRight: "20px",
-                padding: "15px 20px",
-                borderRadius: "5px",
-                position: "relative",
-                backgroundColor: "rgba(95, 82, 235, 0.1)",
-              }}
-            >
-              <Clipboard fill="#fff" />
-            </Box>
-            <div>Formulir Klaim</div>
-          </Box>
-        </Card>
+        <CardFormulir
+          title="Formulir Klaim"
+          bgColor="rgba(95, 82, 235, 0.1)"
+          icon={<Clipboard fill="#fff" color="#5f52eb" />}
+        />
 
         <Box
           className="color-primary"
@@ -81,45 +86,29 @@ export default function FormClaim() {
             marginBottom: "20px",
           }}
         >
-          <Box
-            sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
-          >
-            <Typography sx={{ minWidth: 150 }}>No. Polisi</Typography>
-            <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum
-              dicta velit provident sit. Aliquid eos, numquam placeat eius
-              dolorum hic quo in eligendi ea illo odio voluptate inventore saepe
-              autem!
-            </Typography>
+          <Box mb="10px">
+            <BoxDesc title="No. Polisi" content="B 1234 EFG" />
           </Box>
-          <Box
-            sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
-          >
-            <Typography sx={{ minWidth: 150 }}>Nama Tanggungan</Typography>
-            <Typography>No. Polisi</Typography>
+          <Box mb="10px">
+            <BoxDesc title="Nama Tertanggung" content="Fajar Prihadi" />
           </Box>
-          <Box
-            sx={{ display: "flex", flexDirection: { xs: "column", sm: "row" } }}
-          >
-            <Typography sx={{ minWidth: 150 }}>No Polis</Typography>
-            <Typography>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
-              excepturi dolorum voluptatum quasi saepe nam, aspernatur fugit
-              vero optio eveniet?
-            </Typography>
+          <Box mb="10px">
+            <BoxDesc title="No. Polis" content="VCL2007001" />
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: { xs: "column", sm: "row" },
-            }}
-          >
-            <Typography sx={{ minWidth: 150 }}>Nilai Pertanggunan</Typography>
-            <Typography>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta
-              excepturi dolorum voluptatum quasi saepe nam, aspernatur fugit
-              vero optio eveniet?
-            </Typography>
+          <Box mb="10px">
+            <BoxDesc title="Periode" content="1 Juni 2020 - 30 juni 2021" />
+          </Box>
+          <Box mb="10px">
+            <BoxDesc title="Nilai Pertanggungan" content="Rp.120.000.000,-." />
+          </Box>
+          <Box mb="10px">
+            <BoxDesc title="Buatan/Merk" content="Jepang/Honda" />
+          </Box>
+          <Box mb="10px">
+            <BoxDesc title="Tahun Pembuatan" content="2019" />
+          </Box>
+          <Box mb="10px">
+            <BoxDesc title="No. Rangka" content="MCM24000" />
           </Box>
         </Box>
 
@@ -128,7 +117,7 @@ export default function FormClaim() {
             border: "1px solid #eee",
             borderRadius: "5px",
             display: "flex",
-            padding: "10px",
+            padding: "10px 15px 30px",
             flexDirection: "column",
           }}
         >
@@ -138,75 +127,145 @@ export default function FormClaim() {
             multiline
             maxRows={4}
             variant="standard"
-            sx={{ color: "#5f52eb" }}
+            value={dataInsurance.namaPengemudi}
+            sx={{ color: "#5f52eb", mb: "10px" }}
+            placeholder="Masukan Nama Pengemudi"
+            onChange={(e) =>
+              setDataInsurance((prev) => ({
+                ...prev,
+                namaPengemudi: e.target.value,
+              }))
+            }
           />
 
-          <FormControl
-            variant="standard"
-            sx={{ minWidth: 120, marginBottom: "20px" }}
-          >
+          <FormControl variant="standard" sx={{ minWidth: 120, mb: "10px" }}>
             <InputLabel id="demo-simple-select-standard-label">
               Lain-lain
             </InputLabel>
             <Select
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
-              // value={age}
-              // onChange={handleChange}
+              value={dataInsurance.warnaMobil}
+              onChange={(e) =>
+                setDataInsurance((prev) => ({
+                  ...prev,
+                  warnaMobil: e.target.value,
+                }))
+              }
               label="Lain-lain"
             >
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value="Merah">Merah</MenuItem>
+              <MenuItem value="Hitam">Hitam</MenuItem>
+              <MenuItem value="Putih">Putih</MenuItem>
+              <MenuItem value="Lainnya">Lainnya</MenuItem>
             </Select>
           </FormControl>
 
-          <LocalizationProvider dateAdapter={AdapterMoment}>
+          <LocalizationProvider
+            dateAdapter={AdapterMoment}
+            adapterLocale="zhCN"
+          >
             <DesktopDatePicker
               label="Date desktop"
-              inputFormat="MM/DD/YYYY"
-              // value={value}
-              // onChange={handleChange}
+              inputFormat="dddd MMMM YYYY"
+              value={
+                dataInsurance.tanggalKejadian
+                  ? moment(dataInsurance.tanggalKejadian).locale("id")
+                  : null
+              }
+              disableMaskedInput
+              onChange={(e) =>
+                setDataInsurance((prev) => ({
+                  ...prev,
+                  tanggalKejadian: e,
+                }))
+              }
               renderInput={(params) => (
-                <TextField {...params} label="Standard" variant="standard" />
+                <TextField
+                  {...params}
+                  label="Tanggal dan Waktu Kejadian"
+                  variant="standard"
+                  sx={{ mb: "10px" }}
+                />
               )}
             />
           </LocalizationProvider>
 
-          <FormControl
-            variant="standard"
-            sx={{ minWidth: 120, marginBottom: "20px" }}
-          >
+          <FormControl variant="standard" sx={{ minWidth: 120, mb: "20px" }}>
             <InputLabel id="demo-simple-select-standard-label">
               Lain-lain
             </InputLabel>
             <Select
               labelId="demo-simple-select-standard-label"
               id="demo-simple-select-standard"
-              // value={age}
-              // onChange={handleChange}
+              value={dataInsurance.tahunPembuatan}
+              onChange={(e) =>
+                setDataInsurance((prev) => ({
+                  ...prev,
+                  tahunPembuatan: e.target.value,
+                }))
+              }
               label="Lain-lain"
             >
               <MenuItem value="">
                 <em>None</em>
               </MenuItem>
-              <MenuItem value={10}>Ten</MenuItem>
-              <MenuItem value={20}>Twenty</MenuItem>
-              <MenuItem value={30}>Thirty</MenuItem>
+              <MenuItem value={2008}>2008</MenuItem>
+              <MenuItem value={2009}>2009</MenuItem>
+              <MenuItem value={2011}>2011</MenuItem>
+              <MenuItem value={2012}>2012</MenuItem>
+              <MenuItem value={2019}>2019</MenuItem>
+              <MenuItem value="Lainnya">Lainnya</MenuItem>
             </Select>
           </FormControl>
 
           <Input
             placeholder="Silakan isi hubungan dengan tanggungan"
-            sx={{ marginBottom: "20px" }}
+            sx={{ mb: "20px" }}
+            value={dataInsurance.hubunganTangunggan}
+            onChange={(e) =>
+              setDataInsurance((prev) => ({
+                ...prev,
+                hubunganTangunggan: e.target.value,
+              }))
+            }
           />
-          <Input placeholder="Silakan isi penyebab" />
+
+          <Input
+            placeholder="Silakan isi penyebab"
+            multiline
+            value={dataInsurance.penyebabKecelakaan}
+            onChange={(e) =>
+              setDataInsurance((prev) => ({
+                ...prev,
+                penyebabKecelakaan: e.target.value,
+              }))
+            }
+          />
         </Box>
 
-        <div>Form Claim</div>
+        <Button
+          variant="contained"
+          sx={{
+            backgroundColor: "#0fba09",
+            width: "100%",
+            m: "20px 0",
+            textTransform: "capitalize",
+          }}
+          onClick={() => {
+            dispatch(
+              addDataInsurance({
+                dataInsurance: dataInsurance,
+              })
+            );
+            router.push("/register/sim-stnk");
+          }}
+        >
+          Simpan
+        </Button>
       </Container>
     </>
   );
