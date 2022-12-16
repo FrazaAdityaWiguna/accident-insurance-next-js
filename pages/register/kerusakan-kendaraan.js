@@ -15,6 +15,8 @@ import FieldUpload2 from "../../components/field/fieladUpload2";
 import BackHeader from "../../components/header/backHeader";
 import NextHead from "../../components/layout/nextHead";
 import { addImgsAccidents } from "../../lib/redux/reducer/actionHandleData";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 export default function VehicleDamage() {
   const [dataImgsAccidents, setDataImgsAccidents] = useState([]);
@@ -99,14 +101,16 @@ export default function VehicleDamage() {
                 }}
               >
                 <Stack direction="row" alignItems="center">
-                  <img
-                    src={data.dataImg}
-                    alt={`Foto Kerusakan ${index + 1}`}
-                    style={{
-                      maxWidth: "100px",
-                      maxHeight: "100px",
-                    }}
-                  />
+                  <Zoom>
+                    <img
+                      src={data.dataImg}
+                      alt={`Foto Kerusakan ${index + 1}`}
+                      style={{
+                        maxWidth: "100px",
+                        maxHeight: "100px",
+                      }}
+                    />
+                  </Zoom>
                   <Box ml={3} sx={{ color: "#8c8b8b" }}>
                     <Typography>{data.nameImg}</Typography>
                     <Typography>{data.sizeImg / 1000000} mb</Typography>

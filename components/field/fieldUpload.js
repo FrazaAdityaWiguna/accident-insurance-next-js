@@ -1,5 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { PlusCircle, Trash2 } from "react-feather";
+import Zoom from "react-medium-image-zoom";
+import "react-medium-image-zoom/dist/styles.css";
 
 export default function FieldUpload({
   title,
@@ -31,17 +33,19 @@ export default function FieldUpload({
             overflow: "hidden",
           }}
         >
-          <img
-            src={contentImg}
-            alt=""
-            style={{ maxHeight: "300px", maxWidth: "100%" }}
-          />
+          <Zoom>
+            <img
+              src={contentImg}
+              alt=""
+              style={{ maxHeight: "300px", maxWidth: "100%" }}
+            />
+          </Zoom>
           <Box
             sx={{
               position: "absolute",
               bottom: "3px",
               right: 0,
-              p: "20px",
+              p: { xs: "10px", sm: "20px" },
               borderTopLeftRadius: "10px",
               backgroundColor: "rgba(250, 2, 23, 0.4)",
               cursor: "pointer",
