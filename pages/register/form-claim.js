@@ -51,9 +51,9 @@ export default function FormClaim() {
 
   return (
     <>
-      <Container maxWidth="md">
+      <Container maxWidth="md" sx={{ mt: 4 }}>
         <NextHead title="Form Klaim" />
-        <BackHeader title="Registrasi Klaim" prevPage="/" />
+        {/* <BackHeader title="Registrasi Klaim" prevPage="/" /> */}
 
         <CardFormulir
           title="Formulir Klaim"
