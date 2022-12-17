@@ -22,3 +22,7 @@ Instructions on how to deploy the project to a live system.
 - Material UI
 - Redux Toolkit
 - Redux Persist
+
+## Demo
+
+https://accident-insurance-next-js.vercel.app/register/form-claim
